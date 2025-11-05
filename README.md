@@ -16,3 +16,7 @@ winget install ezwinports.make
 ```
 
 After restarting the terminal make sure that the installation was correct by checking the version.
+
+## Files Location
+
+This repository needs to be cloned and placed inside the 'examples\gb' path of the GBDK repo. This is not the ideal way to do this but for the sake of simplicity we shall keep it this way for now.
