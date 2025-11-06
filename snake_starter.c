@@ -88,9 +88,35 @@ void draw_snake()
 // ========== STEP 8: MOVEMENT ==========
 void update_snake_position()
 {
-    // TODO: shift each body segment one step forward
-    // then move head based on direction (dir)
-    // remember to wrap around edges!
+    for (uint8_t i = 0; i < snake_len - 1; ++i)
+    {
+        snake_x[i] = snake_x[i + 1];
+        snake_y[i] = snake_y[i + 1];
+    }
+
+    int8_t hx = snake_x[snake_len - 1];
+    int8_t hy = snake_y[snake_len - 1];
+
+    if (dir == DIR_UP)
+        hy--;
+    else if (dir == DIR_DOWN)
+        hy++;
+    else if (dir == DIR_LEFT)
+        hx--;
+    else if (dir == DIR_RIGHT)
+        hx++;
+
+    if (hx < 0)
+        hx = GRID_W - 1;
+    else if (hx >= GRID_W)
+        hx = 0;
+    if (hy < 0)
+        hy = GRID_H - 1;
+    else if (hy >= GRID_H)
+        hy = 0;
+
+    snake_x[snake_len - 1] = (uint8_t)hx;
+    snake_y[snake_len - 1] = (uint8_t)hy;
 }
 
 // ========== STEP 9: GROWTH ==========
